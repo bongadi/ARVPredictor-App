@@ -1,0 +1,91 @@
+<ion-content class="back-view2" style="position:relative">
+  <button ion-button icon-only menuToggle style="position:absolute;top:10px;left:10px;z-index:999999999" mode="ios"
+          color="mytran">
+    <ion-icon name="menu" color="myblack" style="font-size:20px"></ion-icon>
+  </button>
+
+  <div
+    style="font-size:12px;width:100%;background:transparent;position:absolute;top:0px;left:0px;z-index:99999999;padding:15px">
+    <div class="row row2" style="width:100%">
+      <ion-row style="width:100%">
+        <ion-col style="text-align:center">
+          <img src="assets/logo.jpeg" style="border-radius:50%;height:100px;width:100px;"/>
+          <br>
+          <br>
+          <div style="width:100%;font-size:20px;color:#000000"> ARV Predictor</div>
+          <div style="font-size:11px;width:100%;text-align:center;color:#000000"> &copy; Beatrice</div>
+          <div style="font-size:11px;width:100%;text-align:center;color:#000000"> Welcome, {{this.user.profile.name}}</div>
+          <div style="font-size:11px;width:100%;text-align:center;color:#000000"> Please choose your preferred method of
+            Input
+          </div>
+
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row style="width:100%">
+
+        <ion-col col-12 style="text-align:center">
+          <div
+            style="width:100%;height:auto;padding:2px">
+            <h3
+              style="margin-right:auto;margin-left:auto;padding:2px">
+              Drug Display Options
+            </h3>
+          </div>
+        </ion-col>
+	</ion-row>
+
+      <ion-row style="width:100%">
+
+        <ion-col col-12 style="text-align:center" *ngFor="let category of drugDisplayOptions">
+         <code> <b>{{category.name}} </b></code>
+
+		  <ion-row style="width:100%">  
+
+			<ion-col col-3 *ngFor="let option of category.options" class="padding" style="padding : 2px">
+            {{option.name }}
+            <ion-checkbox [checked]='option.checked' (ionChange)='handleDrugOptionChange($event)' class='form-control'></ion-checkbox>
+			</ion-col>
+		  </ion-row>
+
+        </ion-col>
+
+      </ion-row>
+
+
+      <ion-row style="width:100%">
+
+        <ion-col col-6 style="text-align:center">
+          <div
+            style="background:	rgba(204,204,204,.6);margin:5px;width:100%;height:auto;border-radius:10px;padding:10px"
+            (click)="openPage('ApplyLoansPage')">
+            <div
+              style="background:#10175D;height:70px;width:70px;border-radius:50%;margin-right:auto;margin-left:auto;padding:15px">
+              <img src="assets/mutation_icon.png" style="height:40px;width::40px"/>
+            </div>
+            <div style="width:100%;margin-top:10px;font-size:12px;color:#000000">
+              Input Mutation
+            </div>
+          </div>
+        </ion-col>
+
+        <ion-col col-6 style="text-align:center">
+          <div
+            style="background:	rgba(204,204,204,.6);margin:5px;width:100%;height:auto;border-radius:10px;padding:10px"
+            (click)="openPage('AccountServicesPage')">
+            <div
+              style="background:#10175D;height:70px;width:70px;border-radius:50%;margin-right:auto;margin-left:auto;padding:15px">
+              <img src="assets/sequence_icon.jpg" style="height:40px;width::40px"/>
+            </div>
+            <div style="width:100%;margin-top:10px;font-size:12px;color:#000000">
+              Input Sequence
+            </div>
+          </div>
+        </ion-col>
+
+
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

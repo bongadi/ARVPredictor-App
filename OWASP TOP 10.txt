@@ -1,0 +1,23 @@
+Prototype Override Protection Bypass
+https://snyk.io/org/kingjuli/monitor/8bc09a29-ae19-43be-a77e-aa0e344972dc
+
+1. Treat the codebase like a public website
+2. Move sensitive operations to a server
+3. Communicate over HTTPS
+4. Don’t store sensitive data in local storage
+5. Consider using an authentication service
+6. Beef up your content security policy
+
+
+You do not want to be using naked RSA encryption for messages. You need to be using a padding scheme and key wrapping like OAEP. Designing cryptographic protocols is extremely hard, and even experts who know far more than either you or I make mistakes doing it. Don't do it yourself. Use standards like JWE.
+
+
+Beef up your content security policy
+- Its responsibility is deciding what content can be loaded into your application and what can be executed
+
+<meta http-equiv="Content-Security-Policy" content="font-src 'self' data:; img-src * data:; default-src gap://ready file://* *; script-src 'self' 'unsafe-inline' 'unsafe-eval' * ; style-src 'self' 'unsafe-inline' *">
+
+- Prevent XSS vunerabilities
+It allows images to be loaded from any domain,
+ unsafe-eval which allows for the execution of Javascript functions like eval()
+

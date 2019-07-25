@@ -1,0 +1,100 @@
+<!--
+  Generated template for the SelfRegistration page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+  <ion-navbar color="abcdarkblue" >
+    <ion-title >Register</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="back-view2" padding>
+    <ion-card padding>
+	    <ion-row style="position:relative;display:flex;align-items:center">
+	        <div style="position:absolute;border-radius:5px;top:50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%);background:#10175D;height:2px;width:90%;z-index:1"></div>
+		    <ion-col class="center">
+		        <div class="center {{selectedPage}}" style="color:#ffffff;border-radius:50%;height:30px;width:30px;z-index:2;border:2px solid #10175D" (click)="openPage('1')">1</div>
+		    </ion-col>
+		    <ion-col class="center">
+		     	<div class="center {{selectedPage2}}" style="color:#ffffff;border-radius:50%;height:30px;width:30px;z-index:2;border:2px solid #10175D" (click)="openPage('2')" >2</div>
+		    </ion-col>
+	    </ion-row>
+	    <br>
+
+        <div *ngIf="firstform" style="width:100%;text-align:center">
+        	
+			<ion-row style="position:relative;height:45px;font-size:12px;background:#50578A;border-radius:25px">
+			   <div style="position:absolute;top:-24px;left:23px;color:#000000;font-size:11px;padding:5px;white-space: nowrap;overflow: hidden;">First Name</div>
+			   <ion-col col-3 style="padding:0px;background:#10175D;border-radius:25px 0px 0px 25px" class="center">
+			       <ion-icon name="contact" style="font-size:25px" color="mywhite"></ion-icon>
+			   </ion-col>
+			   <ion-col col-9 style="padding:0px" class="center">
+			       <input class="customplaceholder" style="padding-left:10px;background:rgba(0,0,0,0);color:#ffffff;height:100%;border:none;width:100%" type="text" maxlength="100"  [(ngModel)]="objectblock.fname" />
+			   </ion-col>
+			</ion-row>
+			<div style="padding:3px;width:100%;color:#8b0000;font-size:11px" *ngIf="error==1">Enter a valid first name</div>
+			<br>
+			<br>
+			<ion-row style="position:relative;height:45px;font-size:12px;background:#50578A;border-radius:25px">
+			   <div style="position:absolute;top:-24px;left:23px;color:#000000;font-size:11px;padding:5px;white-space: nowrap;overflow: hidden;">Last Name</div>
+			   <ion-col col-3 style="padding:0px;background:#10175D;border-radius:25px 0px 0px 25px" class="center">
+			       <ion-icon name="contact" style="font-size:25px" color="mygreen"></ion-icon>
+			   </ion-col>
+			   <ion-col col-9 style="padding:0px" class="center">
+			       <input class="customplaceholder" style="padding-left:10px;background:rgba(0,0,0,0);color:#ffffff;height:100%;border:none;width:100%" type="text" maxlength="100" [(ngModel)]="objectblock.lname" />
+			   </ion-col>
+			</ion-row>
+			<div style="padding:3px;width:100%;color:#8b0000;font-size:11px" *ngIf="error==2">Enter a valid last name</div>
+			<br>
+			<br>
+			<ion-row style="position:relative;height:45px;font-size:12px;background:#50578A;border-radius:25px">
+			   <div style="position:absolute;top:-24px;left:23px;color:#000000;font-size:11px;padding:5px;white-space: nowrap;overflow: hidden;">Email Address</div>
+			   <ion-col col-3 style="padding:0px;background:#10175D;border-radius:25px 0px 0px 25px" class="center">
+			       <ion-icon name="phone-portrait" style="font-size:25px" color="mywhite"></ion-icon>
+			   </ion-col>
+			   <ion-col col-9 style="padding:0px" class="center">
+			       <input class="customplaceholder2" style="padding-left:10px;background:rgba(0,0,0,0);color:#ffffff;letter-spacing:5px;height:100%;border:none;width:100%" type="email" placeholder="Email" [(ngModel)]="objectblock.email" />
+			   </ion-col>
+
+			</ion-row>
+			<div style="padding:3px;width:100%;color:#8b0000;font-size:11px;" *ngIf="error==3">Enter a valid email address</div>
+			<br>
+			<br>
+			<button ion-button block color="abcdarkblue"   (click)="openPage('2')"  no-border  style="border-radius:25px;font-size:14px;height:45px;width:auto;margin-left:auto;margin-right:auto;min-width:120px">Next</button>
+
+	    </div>
+		<div *ngIf="!firstform">
+			<br>
+			<ion-row style="position:relative;height:45px;font-size:12px;background:#50578A;border-radius:25px">
+			   <div style="position:absolute;top:-24px;left:23px;color:#000000;font-size:11px;padding:5px;white-space: nowrap;overflow: hidden;">Username</div>
+			   <ion-col col-3 style="padding:0px;background:#10175D;border-radius:25px 0px 0px 25px" class="center">
+			       <ion-icon name="list-box" style="font-size:25px" color="mywhite"></ion-icon>
+			   </ion-col>
+			   <ion-col col-9 style="padding:0px" class="center">
+			       <input class="customplaceholder2" style="padding-left:10px;background:rgba(0,0,0,0);color:#ffffff;height:100%;border:none;width:100%" type="text" maxlength="100" [(ngModel)]="objectblock.username" />
+			   </ion-col>
+			</ion-row>
+	        <div style="padding:3px;width:100%;color:#8b0000;font-size:11px" *ngIf="error==4">Enter a valid username</div>
+		    <br>
+			<br>
+			<ion-row style="position:relative;height:45px;font-size:12px;background:#50578A;border-radius:25px">
+			   <div style="position:absolute;top:-24px;left:23px;color:#000000;font-size:11px;padding:5px;white-space: nowrap;overflow: hidden;">Password</div>
+			   <ion-col col-3 style="padding:0px;background:#10175D;border-radius:25px 0px 0px 25px" class="center">
+			       <ion-icon name="key" style="font-size:25px" color="mywhite"></ion-icon>
+			   </ion-col>
+			   <ion-col col-9 style="padding:0px" class="center">
+			       <input class="customplaceholder2" style="padding-left:10px;background:rgba(0,0,0,0);color:#ffffff;height:100%;border:none;width:100%" type="password" maxlength="100" [(ngModel)]="objectblock.password" />
+			   </ion-col>
+			</ion-row>
+	        <div style="padding:3px;width:100%;color:#8b0000;font-size:11px" *ngIf="error==5">Enter a valid/ strong password</div>
+		    <br>
+
+	        <button ion-button block color="abcdarkblue"   (click)="submit(objectblock)" no-border  style="border-radius:25px;font-size:14px;height:45px;width:auto;margin-left:auto;margin-right:auto;min-width:120px">Register</button>
+	    </div>
+    </ion-card>
+
+</ion-content>

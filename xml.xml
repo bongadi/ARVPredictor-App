@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <field39>00</field39>
+  <field66>254702818290</field66>
+  <field42>606465ATM000001</field42>
+  <field43>Stanford DRD</field43>
+  <field65>agent</field65>
+  <field48>
+
+    {"INSTALLMENTS":"3.00","PREMIUMAMOUNT":"100000.00","INSTALLMENTAMOUNT":"36500.00"}
+
+  </field48>
+  <field49>KES</field49>
+  <field24>MM</field24>
+  <field68>LOGIN REQUEST</field68>
+  <field69>001</field69>
+  <field41>FID00001</field41>
+  <field60>KE</field60>
+  <field61>254722343959</field61>
+  <field126>LOGIN REQUEST</field126>
+  <field123>MBL</field123>
+  <field11>709238</field11>
+  <field12>183132</field12>
+  <field56>bcac5bdc-32fb-42df-8ddb-ce8f705ba8c5</field56>
+  <field0>0200</field0>
+  <field32>MBL</field32>
+  <field98>LOGIN</field98>
+  <field37>AAA1WB7TIY</field37>
+  <field13>0913</field13>
+  <field7>0913183132</field7>
+  <field3>101010</field3>
+  <field2>254722343959</field2>
+  <field96>initialrequest</field96>
+  <field4>0</field4>
+  <field50>2</field50>
+</response> 2017-09-13 18:31:32

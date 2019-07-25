@@ -1,0 +1,173 @@
+<!--
+  Generated template for the MobileMoneyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content class="back-view2" style="position:relative">
+  <button ion-button icon-only style="position:absolute;top:10px;left:10px;z-index:999999999" mode="ios" color="mytran"
+          (click)="backToMainPage('MainPage')">
+    <ion-icon name="md-arrow-round-back" color="mywhite" style="font-size:20px"></ion-icon>
+  </button>
+  <ion-slides loop="true" autoplay=10000 speed=1000 effect="fade" style="height:100%;postion:absolute;left:0px;top:0px">
+
+    <ion-slide style="background:url('assets/back3.jpg')center;background-size:cover">
+    </ion-slide>
+
+    <ion-slide style="background:url('assets/back1.jpg')center;background-size:cover">
+    </ion-slide>
+
+  </ion-slides>
+
+
+  <div class="container2"
+       style="font-size:12px;width:100%;background:rgba(80,87,138,.5);position:absolute;top:0px;left:0px;z-index:99999999;padding:15px">
+    <div style="width:100%; margin-top:20px;">
+
+      <ion-row style="width:100%">
+        <ion-col style="text-align:center">
+
+          <div style="width:100%;font-size:20px;color:#ffffff">Mobile Money</div>
+        </ion-col>
+
+      </ion-row>
+
+      <ion-card padding>
+        <br>
+
+        <ion-row style="position:relative;height:45px;font-size:12px;background:#50578A;padding:0px;border-radius:25px">
+          <div
+            style="position:absolute;top:-24px;left:23px;color:#000000;font-size:11px;padding:5px;white-space: nowrap;overflow: hidden;">
+            Send Money from
+          </div>
+          <ion-col col-3 style="padding:0px;background:#10175D;border-radius:25px 0px 0px 25px" class="center">
+            <ion-icon name="briefcase" style="font-size:25px" color="mywhite"></ion-icon>
+          </ion-col>
+          <ion-col col-9 style="padding:0px" class="center">
+            <ion-item color="mytran" style="font-size:12px" no-lines>
+
+              <ion-select [(ngModel)]="this.objectblock.accountFrom" interface="action-sheet"
+                          style="max-width:auto; min-width:95%;text-align:right;">
+                <ion-option *ngFor="let account of this.accounts" [value]="account">{{account}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+          </ion-col>
+        </ion-row>
+        <br>
+        <br>
+
+        <ion-row style="position:relative;height:45px;font-size:12px;background:#50578A;padding:0px;border-radius:25px">
+          <div
+            style="position:absolute;top:-24px;left:23px;color:#000000;font-size:11px;padding:5px;white-space: nowrap;overflow: hidden;">
+            Select Provider
+          </div>
+          <ion-col col-3 style="padding:0px;background:#10175D;border-radius:25px 0px 0px 25px" class="center">
+            <ion-icon name="briefcase" style="font-size:25px" color="mywhite"></ion-icon>
+          </ion-col>
+          <ion-col col-9 style="padding:0px;" class="center">
+            <ion-item color="mytran" style="font-size:12px" no-lines>
+
+              <ion-select [(ngModel)]="this.objectblock.billerName" interface="action-sheet"
+                          style="max-width:auto;min-width:95%;text-align:right;">
+                <ion-option *ngFor="let biller of this.billers" [value]="biller">
+                  <ion-img src="assets/{{biller}}.png"></ion-img>
+                  {{biller}}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+
+          </ion-col>
+
+        </ion-row>
+        <br>
+        <br>
+
+
+        <ion-row style="position:relative;height:auto;font-size:12px;background:#50578A;padding:0px;border-radius:25px">
+          <div
+            style="position:absolute;top:-24px;left:23px;color:#000000;font-size:11px;padding:5px;white-space: nowrap;overflow: hidden;">
+            Send Money to
+          </div>
+          <ion-col col-3 style="padding:0px;background:#10175D;border-radius:25px 0px 0px 25px" class="center">
+            <ion-icon name="person" style="font-size:25px" color="mywhite"></ion-icon>
+          </ion-col>
+          <ion-col col-9 style="padding:0px;" class="center">
+            <ion-list radio-group [(ngModel)]="this.objectblock.isOtherNumber">
+              <ion-item color="mytran" style="font-size:12px">
+                <ion-label>My number</ion-label>
+                <ion-radio value="false"  checked color="mybrown">My Number</ion-radio>
+              </ion-item>
+              <hr style="background:#ffffff;max-width:90%">
+              <ion-item color="mytran" style="font-size:12px" no-lines>
+                <ion-label>Other number</ion-label>
+                <ion-radio value="true" color="mybrown">Other Number</ion-radio>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <br>
+        <br>
+
+        <span [hidden]="this.objectblock.isOtherNumber !== 'true'">
+        <ion-row
+          style="position:relative;height:45px;font-size:12px;background:#50578A;padding:0px;border-radius:25px">
+          <div
+            style="position:absolute;top:-24px;left:23px;color:#000000;font-size:11px;padding:5px;white-space: nowrap;overflow: hidden;">
+
+            <span float-left=""> Phone Number </span>
+            <span float-right=""> {{this.objectblock.contactObject.name}} </span>
+
+          </div>
+
+          <ion-col col-3 style="padding:0px;background:#10175D;border-radius:25px 0px 0px 25px" class="center" (click)="pickContact()" >
+              <ion-icon name="call"  style="font-size:25px" color="mywhite"> </ion-icon>
+          </ion-col>
+
+          <ion-col col-9 style="padding:0px;" class="center">
+            <input class="customplaceholder2" [(ngModel)]="this.objectblock.accountTo"
+                   style="padding-left:10px;background:rgba(0,0,0,0);color:#ffffff;height:100%;border:none;width:100%"
+                   type="tel"  placeholder="(07)" maxlength="10" minlength="10"/>
+          </ion-col>
+
+        </ion-row>
+        <br>
+        <br>
+
+        </span>
+
+        <ion-row style="position:relative;height:45px;font-size:12px;background:#50578A;padding:0px;border-radius:25px">
+          <div
+            style="position:absolute;top:-24px;left:23px;color:#000000;font-size:11px;padding:5px;white-space: nowrap;overflow: hidden;">
+            Amount
+          </div>
+          <ion-col col-3 style="padding:0px;background:#10175D;border-radius:25px 0px 0px 25px" class="center">
+            <ion-icon name="cash" style="font-size:25px" color="mywhite"></ion-icon>
+          </ion-col>
+          <ion-col col-9 style="padding:0px;" class="center">
+            <input class="customplaceholder2" [(ngModel)]="this.objectblock.amount"
+                   style="padding-left:10px;background:rgba(0,0,0,0);color:#ffffff;height:100%;border:none;width:100%" type="tel" maxlength="10"/>
+          </ion-col>
+        </ion-row>
+
+        <div style="padding:3px;width:100%;color:#8b0000;font-size:11px" *ngIf="error==1">Enter a valid amount <br></div>
+
+        <div style="padding:3px;width:100%;color:#8b0000;font-size:11px" *ngIf="error==2">Enter a valid mobile money provider<br></div>
+
+        <div style="padding:3px;width:100%;color:#8b0000;font-size:11px" *ngIf="error==3">Choose / Enter a valid account to send to <br></div>
+
+        <div style="padding:3px;width:100%;color:#8b0000;font-size:11px" *ngIf="error==4">Enter a valid phone number<br></div>
+
+        <button ion-button block color="abcdarkblue" (click)="submit()" no-border
+                style="border-radius:25px;font-size:14px;height:45px;width:auto;margin-left:auto;margin-right:auto;min-width:120px">
+          Send Money
+        </button>
+      </ion-card>
+    </div>
+
+  </div>
+</ion-content>
+
+

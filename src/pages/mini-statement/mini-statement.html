@@ -1,0 +1,110 @@
+<!--
+  Generated template for the MiniStatementPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content class="back-view2" style="position:relative">
+  <button ion-button icon-only style="position:absolute;top:10px;left:10px;z-index:999999999" mode="ios" color="mytran"
+          (click)="backToMainPage('MainPage')">
+    <ion-icon name="md-arrow-round-back" color="mywhite" style="font-size:20px"></ion-icon>
+  </button>
+  <ion-slides loop="true" autoplay=10000 speed=1000 effect="fade" style="height:100%;postion:absolute;left:0px;top:0px">
+
+    <ion-slide style="background:url('assets/back3.jpg')center;background-size:cover">
+    </ion-slide>
+
+    <ion-slide style="background:url('assets/back1.jpg')center;background-size:cover">
+    </ion-slide>
+
+  </ion-slides>
+
+  <div class="container2 overflow"
+       style="font-size:12px;width:100%;background:rgba(80,87,138,.5);position:absolute;top:0px;left:0px;z-index:99999999;padding:15px">
+
+    <div style="width:100%; margin-top:20px;" padding>
+      <ion-row style="width:100%">
+        <ion-col style="text-align:center">
+
+          <div style="width:100%;font-size:20px;color:#ffffff">Mini-Statement</div>
+        </ion-col>
+
+      </ion-row>
+
+      <ion-card padding>
+        <br>
+        <ion-row style="position:relative;height:45px;font-size:12px;background:#50578A;border-radius:25px">
+          <div
+            style="position:absolute;top:-24px;left:23px;color:#000000;font-size:11px;padding:5px;white-space: nowrap;overflow: hidden;">
+            Select account
+          </div>
+          <ion-col col-3 style="padding:0px;background:#10175D;border-radius:25px 0px 0px 25px" class="center">
+            <ion-icon name="briefcase" style="font-size:25px" color="mywhite"></ion-icon>
+          </ion-col>
+          <ion-col col-9 style="padding:0px" class="center">
+            <ion-item color="mytran" style="font-size:12px" no-lines>
+
+              <ion-select [(ngModel)]="objectblock.accountnumber" interface="action-sheet"
+                          style="max-width:auto;min-width:95%;text-align:right;">
+                <ion-option *ngFor="let account of accounts" [value]="account">{{account}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+          </ion-col>
+
+        </ion-row>
+        <br>
+
+        <button ion-button block color="abcdarkblue" no-border
+                style="border-radius:25px;font-size:14px;height:45px;width:auto;margin-left:auto;margin-right:auto;min-width:120px"
+                (click)="submit(objectblock)">Check Mini-Statement
+        </button>
+      </ion-card>
+
+    </div>
+
+    <ion-list *ngIf="!hideheader" inset style="margin: 0; border:1px solid #ddd">
+
+      <ion-item style="background:#0257A7;color:#ffffff;font-size:11px" no-lines>
+        <ion-row>
+          <ion-col col-3  text-center>
+            Date
+          </ion-col>
+          <ion-col col-2 text-center>
+            Type
+          </ion-col>
+          <ion-col col-3 text-center>
+            Amount
+          </ion-col>
+          <ion-col col-4 text-center>
+            Narration
+          </ion-col>
+
+        </ion-row>
+      </ion-item>
+
+        <ion-item *ngFor="let statement of ministatement;" text-wrap >
+          <ion-row>
+            <ion-col col-3 text-center style="border-right:1px solid #ddd; font-size:10px; font-weight: normal;">
+              {{statement.date}}
+            </ion-col>
+            <ion-col col-2 text-center style="border-right:1px solid #ddd; font-size:10px; font-weight: normal;">
+              {{statement.ttype}}
+            </ion-col>
+            <ion-col col-3 text-center  style="border-right:1px solid #ddd; font-size:10px; font-weight: normal;">
+              {{statement.amount}}
+            </ion-col>
+            <ion-col col-4 text-center style="font-size:10px; font-weight: normal;">
+              {{statement.code}}
+            </ion-col>
+          </ion-row>
+
+        </ion-item>
+
+    </ion-list>
+
+  </div>
+
+</ion-content>
+

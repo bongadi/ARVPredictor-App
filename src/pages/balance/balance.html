@@ -1,0 +1,67 @@
+<!--
+  Generated template for the BalancePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content class="back-view2" style="position:relative">
+  <button ion-button icon-only style="position:absolute;top:10px;left:10px;z-index:999999999" mode="ios" color="mytran"
+          (click)="backToMainPage('MainPage')">
+    <ion-icon name="md-arrow-round-back" color="mywhite" style="font-size:20px"></ion-icon>
+  </button>
+  <ion-slides loop="true" autoplay=10000 speed=1000 effect="fade" style="height:100%;postion:absolute;left:0px;top:0px">
+
+    <ion-slide style="background:url('assets/back3.jpg')center;background-size:cover">
+    </ion-slide>
+
+    <ion-slide style="background:url('assets/back1.jpg')center;background-size:cover">
+    </ion-slide>
+
+  </ion-slides>
+
+
+  <div class="container2"
+       style="font-size:12px;width:100%;background:rgba(80,87,138,.5);position:absolute;top:0px;left:0px;z-index:99999999;padding:15px">
+    <div style="width:100%; margin-top:20px;">
+      <ion-row style="width:100%">
+        <ion-col style="text-align:center">
+
+          <div style="width:100%;font-size:20px;color:#ffffff">Wallet Balances</div>
+        </ion-col>
+
+      </ion-row>
+    </div>
+    <br/>
+    <ion-row style="width:100%">
+      <ion-col col-6 style="text-align:center">
+        <div
+          style="background:	rgba(204,204,204,.6);margin:5px;width:100%;height:auto;border-radius:10px;padding:10px"
+          (click)="openPage('BalanceInquiryPage')">
+          <div
+            style="background:#F2F2F0;height:70px;width:70px;border-radius:50%;margin-right:auto;margin-left:auto;padding:15px">
+            <img src="assets/accountservices.png" style="height:40px;width::40px"/>
+          </div>
+          <div style="width:100%;margin-top:10px;font-size:12px;color:#ffffff">
+            Wallet Account Balance
+          </div>
+        </div>
+      </ion-col>
+      <ion-col col-6 style="text-align:center">
+        <div
+          style="background:	rgba(204,204,204,.6);margin:5px;width:100%;height:auto;border-radius:10px;padding:10px"
+          (click)="openPage('LoanBalancePage')">
+          <div
+            style="background:#4264E1;height:70px;width:70px;border-radius:50%;margin-right:auto;margin-left:auto;padding:15px">
+            <img src="assets/accountservices.png" style="height:40px;width::40px"/>
+          </div>
+          <div style="width:100%;margin-top:10px;font-size:12px;color:#ffffff">
+            Loan Balance
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <br/>
+  </div>
+
+</ion-content>

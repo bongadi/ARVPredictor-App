@@ -1,0 +1,231 @@
+<ion-content class="back-view2" style="position:relative">
+  <button ion-button icon-only style="position:absolute;top:10px;left:10px;z-index:999999999" mode="ios" color="mytran"
+    (click)="backToMainPage('MainPage')">
+    <ion-icon name="md-arrow-round-back" color="mywhite" style="font-size:20px"></ion-icon>
+  </button>
+  <ion-slides loop="true" autoplay=10000 speed=1000 effect="fade" style="height:100%;postion:absolute;left:0px;top:0px">
+
+    <ion-slide style="background:url('assets/back3.jpg')center;background-size:cover">
+    </ion-slide>
+
+    <ion-slide style="background:url('assets/back1.jpg')center;background-size:cover">
+    </ion-slide>
+
+  </ion-slides>
+
+  <div class="container2"
+    style="font-size:12px;width:100%;background:rgba(80,87,138,.5);position:absolute;top:0px;left:0px;z-index:99999999;padding:0"
+    *ngIf='this.isSequence'>
+    <div style="width:100%; margin-top:20px;">
+      <ion-row style="width:100%">
+        <ion-col style="text-align:center">
+
+          <div style="width:100%;font-size:20px;color:#ffffff;">Sequence analysis results</div>
+        </ion-col>
+
+      </ion-row>
+
+      <span *ngIf="this.drugResistance.sequence.sequenceAnalysis[0].mutations.length == 0">
+        <ion-card *ngFor="let sequence of this.drugResistance.sequence.sequenceAnalysis" style="white-space: normal;">
+          <ion-card-header text-wrap style=" background: slategrey">
+            Sorry, it seems like you entered an invalid sequence. Kindly review and retry.
+          </ion-card-header>
+        </ion-card>
+      </span>
+
+      <span *ngIf="this.drugResistance.sequence.sequenceAnalysis[0].mutations.length  > 0">
+        <ion-card *ngFor="let sequence of this.drugResistance.sequence.sequenceAnalysis" style="white-space: normal;">
+          <ion-card-header text-wrap style=" background: slategrey">
+            Sequence Summary
+          </ion-card-header>
+          <ion-list>
+            <div *ngFor="let geneSeq of sequence.alignedGeneSequences" style="white-space: normal;" ion-item>
+              <p>Sequence includes {{geneSeq.gene.name}}</p>
+              <p>codons {{geneSeq.firstAA}} - {{geneSeq.lastAA}} {{geneSeq.gene.name}}</p>
+              <p>SubTypes {{sequence.bestMatchingSubtype.display}}<b>; Best Match</b>
+                <ion-icon name="add-circle"></ion-icon>
+              </p>
+
+              <ion-list *ngFor="let subType of firstTenCloseSubtypes">
+                <p *ngIf="sequence.bestMatchingSubtype.display[0] != subType.displayWithoutDistance">
+                  {{subType.referenceAccession}}
+                  : ({{subType.distancePcnt}}) - {{subType.displayWithoutDistance}} </p>
+              </ion-list>
+            </div>
+
+          </ion-list>
+
+          <ion-card-header text-wrap style=" background: slategrey">
+            Sequence Quality Assessment
+          </ion-card-header>
+          <ion-list>
+            <section ref="section" *ngFor="let geneSeq of sequence.alignedGeneSequences" style="white-space: normal;"
+              ion-item>
+              <h3>{{ geneSeq.gene.name}}
+              </h3>
+              <p>Chart unavailable</p>
+            </section>
+          </ion-list>
+
+          <div *ngFor="let drugResistance of sequence.drugResistance">
+            <section ref="section">
+              <ion-card-header style="background: slategrey">
+                Drug Resistance Interpretation: {{drugResistance.gene.name}}
+              </ion-card-header>
+
+              <ion-list>
+                <ion-item *ngFor="let mutations of drugResistance.mutationsByTypes" text-wrap>
+                  {{mutations.mutationType}} Resistance Mutations:
+                  <p>
+                    <span *ngFor="let mutation of mutations.mutations">
+                      <b text-wrap>{{ mutation.text }},</b>
+                    </span>
+                  </p>
+                </ion-item>
+
+                <ion-col col-12>
+                  <ion-row *ngFor="let drugScore of drugResistance.drugScores ">
+
+                    <ion-col col-4 style="float: left;">
+                      <p text-wrap style="font-size: 11px; color: #0257A7">{{drugScore.drug.fullName + '(' + drugScore.drug.displayAbbr
+                      + ')'}}</p>
+                    </ion-col>
+
+                    <ion-col col-4 style="float: right;">
+                      <p text-wrap style="font-size: 11px; color: #0257A7">{{drugScore.text}}</p>
+                    </ion-col>
+
+                    <ion-col col-2 style="float: right;">
+                      <p text-wrap style="font-size: 11px; color: #0257A7">{{drugScore.drugClass.name}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+
+              </ion-list>
+
+              <ion-list>
+                <ion-card-header style="background: slategrey">
+                  <b>{{drugResistance.gene.name}} Comments</b>
+                </ion-card-header>
+
+                <ion-item *ngFor="let comments of drugResistance.commentsByTypes">
+                  PI {{ comments.commentType }}
+                  <ion-list>
+                    <ion-item *ngFor="let comment of comments.comments">
+                      <p text-wrap>{{ comment.text }}</p>
+                    </ion-item>
+                  </ion-list>
+                </ion-item>
+
+              </ion-list>
+            </section>
+          </div>
+        </ion-card>
+      </span>
+    </div>
+  </div>
+
+  <div class="container2"
+    style="font-size:12px;width:100%;background:rgba(80,87,138,.5);position:absolute;top:0px;left:0px;z-index:99999999;padding:15px"
+    *ngIf='!this.isSequence'>
+    <div style="width:100%; margin-top:20px;">
+      <ion-row style="width:100%">
+        <ion-col style="text-align:center">
+
+          <div style="width:100%;font-size:20px;color:#ffffff">Mutation Analysis results</div>
+        </ion-col>
+
+      </ion-row>
+
+      <ion-card no-padding>
+
+        <ion-card-header text-wrap>
+          Results
+        </ion-card-header>
+
+        <ion-card *ngFor="let resistance of this.drugResistance.mutation " style="white-space: normal;">
+
+          <div>Drug Resistance Interpretation : {{resistance.gene.name}}</div>
+
+          <ion-row *ngFor="let mutationByTypes of resistance.mutationsByTypes ">
+
+            <ion-col col-8 class="left">
+              <p text-wrap style="font-size: 11px">{{mutationByTypes.mutationType}} Resistance Mutations</p>
+            </ion-col>
+
+            <ion-col col-4 class="right">
+              <p text-wrap style=" color: #0257A7; font-size: 11px"
+                *ngIf="mutationByTypes.mutations?.length; else no_mutations">
+                <span *ngFor="let mutation of mutationByTypes.mutations"> {{mutation.text}},</span>
+
+              </p>
+
+              <ng-template #no_mutations>None</ng-template>
+
+            </ion-col>
+
+          </ion-row>
+
+          <br>
+
+          <ion-row>
+
+            <ion-col col-12>
+              <h4 text-wrap style="font-size: 11px">Nucleoside & Non-nucleoside Reverse Transcriptase Inhibitor</h4>
+            </ion-col>
+
+            <ion-col col-12>
+              <ion-row *ngFor="let drugScore of  resistance.drugScores ">
+
+                <ion-col col-6 style="float: left;">
+                  <p text-wrap style="font-size: 11px; color: #0257A7">{{drugScore.drug.fullName + '(' + drugScore.drug.displayAbbr
+                    + ')'}}</p>
+                </ion-col>
+
+                <ion-col col-4 style="float: right;">
+                  <p text-wrap style="font-size: 11px; color: #0257A7">{{drugScore.text}}</p>
+                </ion-col>
+
+                <ion-col col-2 style="float: right;">
+                  <p text-wrap style="font-size: 11px; color: #0257A7">{{drugScore.drugClass.name}}</p>
+                </ion-col>
+
+              </ion-row>
+            </ion-col>
+
+            <ion-col col-12>
+              <ion-row *ngFor="let comment of  resistance.commentsByTypes ">
+                <ion-col col-12 style="float: left;" *ngFor="let commentDetail of comment.comments">
+                  <h2 text-wrap style="font-size: 11px; color: #0257A7">{{commentDetail.commentType}}</h2>
+                  <p text-wrap style="font-size: 11px; color: #0257A7">{{commentDetail.text}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col col-12>
+
+              <ion-row>
+                <ion-col col-1 *ngFor="let header of this.dataTableHeader">
+                  <!--<h2>Mutation Scoring: {{drugScore.score}}</h2> -->
+                  <p style="float: left; text-align: center; font-size: small">{{header}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngFor="let drugScore of resistance.drugScores | grouppartial">
+                <ion-col col-1 style="float: left; text-align: center; font-size: small"
+                  *ngFor="let header of this.dataTableHeader">
+                  {{drugScore[header]}}
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+          </ion-row>
+
+        </ion-card>
+
+      </ion-card>
+
+    </div>
+
+  </div>
+
+</ion-content>

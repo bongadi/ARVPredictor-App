@@ -1,0 +1,7 @@
+{
+  "name": "HIVDetector",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
