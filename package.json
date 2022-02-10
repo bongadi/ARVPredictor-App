@@ -66,7 +66,7 @@
     "meteor-rxjs": "^0.4.10",
     "ng2-validation": "^4.2.0",
     "ngx-pipes": "^1.6.5",
-    "node-sass": "^4.8.3",
+    "node-sass": "^7.0.0",
     "rxjs": "^5.4.0",
     "sw-toolbox": "3.6.0",
     "sweetalert2": "^6.6.6",
